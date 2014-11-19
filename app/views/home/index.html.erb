@@ -1,0 +1,22 @@
+<%- model_class = Document -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Facultad</th>
+      <th>Nombre</th>
+      <th>Resumen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td>UANL</td>
+      <td><%= link_to user.email, "/documents/user/#{user.id}" %></td>
+      <td>BIOGRAFIA CHIDA</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

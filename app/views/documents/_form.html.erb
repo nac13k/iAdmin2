@@ -1,0 +1,59 @@
+<%= form_for @document, :html => { class: "form-horizontal document" } do |f| %>
+
+    <% if @document.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @document.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <%= error_span(@document[:title]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :file, class: 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :file, class: 'form-control' %>
+    </div>
+    <%= error_span(@document[:md5]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :abstract, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :abstract, class: 'form-control' %>
+    </div>
+    <%= error_span(@document[:abstract]) %>
+  </div>
+  <!-- <div class="control-group">
+    <%= f.label :md5, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :md5, class: 'form-control' %>
+    </div>
+    <%= error_span(@document[:md5]) %>
+  </div> -->
+  <div class="control-group">
+    <%= f.label :public, class: 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :public%>
+    </div>
+    <%= error_span(@document[:public]) %>
+  </div>
+
+
+  <%= f.submit nil, class: 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            documents_path, class: 'btn btn-default' %>
+
+<% end %>

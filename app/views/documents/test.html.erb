@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Archivo 1</th>
+      <th>Archivo 2</th>
+      <th>Porcentaje de similitud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @win.averages.sort_by(&:last).reverse.each_with_index do |key,index|%>
+    <% k1,k2 = key[0].split("-")  %>
+    <tr>
+      <td><%= k1 %></td>
+      <td><%= k2 %></td>
+      <td><%= "#{(key[1]*1).to_i}%" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

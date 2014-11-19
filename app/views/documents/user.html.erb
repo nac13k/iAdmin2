@@ -1,0 +1,26 @@
+<%- model_class = Document -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:abstract) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:updated_at) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.documents.each do |document| %>
+      <tr>
+        <td><%= document.title %></td>
+        <td><%= document.abstract %></td>
+        <td><%= date_format document.created_at %></td>
+        <td><%= date_format document.updated_at %></td>
+        <td><%= link_to '', document.file.url, class: "btn btn-primary fa fa-eye" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
